@@ -2,6 +2,7 @@ const numBtns = document.querySelectorAll('.num-btn')
 const oprtBtns = document.querySelectorAll('.oprt-btn')
 const expression = document.querySelector('#expression')
 const result = document.querySelector('#result')
+const toggleBtn = document.querySelector('#toggle')
 const delBtn = document.querySelector('.del-btn')
 const clrBtn = document.querySelector('.clr-btn')
 const evalBtn = document.querySelector('.eval-btn')
@@ -15,8 +16,8 @@ let handleClick = ({target}) => {
 }
 let updateDisplay = (val) => {    
         expression.innerHTML = val;
-        const arr = expression.innerText.split(regx);
-        console.log(arr);
+        const arr = val.split(regx);
+        console.log(arr);        
         operand2 = arr[arr.length - 1];        
         compute(operand1, operand2, operator);
         console.log(operand1, operand2, operator);
@@ -30,7 +31,8 @@ let handleDelete = () => {
 let clearScreen = () => {
     result.innerHTML = "";
     expression.innerHTML = "";
-    [operand1, operand2, operator] = [null, null, null];    
+    [operand1, operand2, operator] = [null, null, null]; 
+    val = '';   
 }
 let compute = (operand1, operand2, operator) => { 
     let resultValue = ""; 
@@ -76,3 +78,18 @@ evalBtn.addEventListener('click', () => {
     expression.innerHTML = result.innerHTML;
     result.innerHTML = "";
 });
+
+let root = document.querySelector(':root')
+toggleBtn.addEventListener('change', ({target}) => {
+    if(target.checked) {
+        root.style.setProperty('--bg-color', '#f1f2f3');
+        root.style.setProperty('--text-color', '#17171c');
+        root.style.setProperty('--secondary', '#d2d3da');
+        root.style.setProperty('--general', '#fff');
+    } else {
+        root.style.removeProperty('--bg-color');
+        root.style.removeProperty('--text-color');
+        root.style.removeProperty('--secondary');
+        root.style.removeProperty('--general');
+    }
+})
