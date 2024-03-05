@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Calculator V-1.0</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-card">
+            <div class="mode-toggle">
+                <input type="checkbox" name="" id="toggle" hidden >
+                <label for="toggle" class="toggle">
+                    <i data-feather="sun"></i>
+                    <i data-feather="moon"></i>                    
+                </label>
+            </div>
+            <div class="display-unit">
+                <div class="display">
+                    <h1 id="expression" class="light"></h1>
+                    <h3 id="result" class="light"></h3>                    
+                </div>
+            </div>
+            <div class="buttons-unit">
+                <div class="btn-grid">
+                    <div class="btn clr-btn">C</div>
+                    <div class="btn oprt-btn">+/-</div>
+                    <div class="btn oprt-btn">%</div>
+                    <div class="btn oprt-btn">÷</div>
+                    <div class="btn num-btn" data-value="7">7</div>
+                    <div class="btn num-btn">8</div>
+                    <div class="btn num-btn">9</div>
+                    <div class="btn oprt-btn">×</div>
+                    <div class="btn num-btn">4</div>
+                    <div class="btn num-btn">5</div>
+                    <div class="btn num-btn">6</div>
+                    <div class="btn oprt-btn">-</div>
+                    <div class="btn num-btn">1</div>
+                    <div class="btn num-btn">2</div>
+                    <div class="btn num-btn">3</div>
+                    <div class="btn oprt-btn">+</div>
+                    <div class="btn num-btn">.</div>
+                    <div class="btn num-btn">0</div>
+                    <div class="btn del-btn">
+                        <i data-feather="delete"></i>
+                    </div>
+                    <div class="btn eval-btn">=</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+      </script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
