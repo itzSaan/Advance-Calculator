@@ -11,6 +11,7 @@ let [operand1, operand2, operator] = [null, null, null];
 
 let val='';
 let handleClick = ({target}) => { 
+    // debugger;
     val += target.innerHTML; 
     updateDisplay(val);
 }
@@ -24,9 +25,8 @@ let updateDisplay = (val) => {
 };
 let handleDelete = () => {        
     let str = expression.innerHTML;
-    let newStr = str.slice(0, -1);       
-    
-    updateDisplay(newStr);
+    val = str.slice(0, -1);
+    updateDisplay(val);
 }
 let clearScreen = () => {
     result.innerHTML = "";
@@ -55,7 +55,7 @@ let compute = (operand1, operand2, operator) => {
             break;     
         }
     }
-    result.innerHTML = resultValue;
+    (resultValue === NaN) ? result.innerHTML = "Expression Error" : result.innerHTML = resultValue;
 }
 
 const regx = /[^.0-9]/g;
