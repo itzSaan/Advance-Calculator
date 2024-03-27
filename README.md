@@ -27,7 +27,7 @@ Also having dark/night theme toggler.
 
 ## Link to Preview
 
-- [Advance Calculator](https://github.com/itzSaan/Advance-Calculator)
+- [Advance Calculator](https://itzsaan.github.io/Advance-Calculator/)
 ## Authors
 
 - [@itzSaan](https://www.github.com/itzSaan)
