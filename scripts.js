@@ -6,22 +6,32 @@ const toggleBtn = document.querySelector('#toggle')
 const delBtn = document.querySelector('.del-btn')
 const clrBtn = document.querySelector('.clr-btn')
 const evalBtn = document.querySelector('.eval-btn')
-
+let root = document.querySelector(':root');
+let stack = [];
 let [operand1, operand2, operator] = [null, null, null];
 
 let val='';
-let handleClick = ({target}) => { 
-    // debugger;
+let handleClick = ({target}) => {
     val += target.innerHTML; 
     updateDisplay(val);
 }
+const regx = /[^.0-9]/g;
 let updateDisplay = (val) => {    
-        expression.innerHTML = val;
-        const arr = val.split(regx);
-        console.log(arr);        
-        operand2 = arr[arr.length - 1];        
-        compute(operand1, operand2, operator);
+    expression.innerHTML = val;
+    // console.log(val);      
+    const arr = val.split(regx);
+    if(regx.test(val)) {            
+        operand1 = compute(operand1, operand2, operator);
+        stack.push(operand1);
+            result.innerHTML = operand1;
+        }
+        // console.log(arr);      
+        arr.length == 1 ? 
+                        operand2 = null :
+                        operand2 = arr[arr.length - 1];       
+        // result.innerHTML = compute(operand1, operand2, operator);
         console.log(operand1, operand2, operator);
+        console.log(stack);
 };
 let handleDelete = () => {        
     let str = expression.innerHTML;
@@ -36,7 +46,7 @@ let clearScreen = () => {
 }
 let compute = (operand1, operand2, operator) => { 
     let resultValue = ""; 
-    if(operand1!=""&&operand2!=""&&operator!="") {          
+    if(operand1!=null &&operand2!=null&&operator!=null) {          
     switch (operator) {
         case "×":
             resultValue = parseFloat(operand1) * parseFloat(operand2);
@@ -55,15 +65,15 @@ let compute = (operand1, operand2, operator) => {
             break;     
         }
     }
-    (resultValue === NaN) ? result.innerHTML = "Expression Error" : result.innerHTML = resultValue;
+    operand1 = resultValue;
+    return resultValue;
 }
-
-const regx = /[^.0-9]/g;
 numBtns.forEach(btn => btn.addEventListener('click', ({target}) => {
     handleClick({target});                 
 }));
 oprtBtns.forEach(btn => btn.addEventListener('click', ({target}) => {
-    result.innerHTML != "" ? operand1 = result.innerHTML : operand1 = expression.innerHTML;
+    // result.innerHTML == "" ? operand1 = expression.innerHTML : operand1 = result.innerHTML;
+    operand1 = expression.innerHTML;
     handleClick({target}); 
     let text = expression.innerHTML;
     if(regx.test(text)) {
@@ -76,10 +86,11 @@ delBtn.addEventListener('click', handleDelete);
 clrBtn.addEventListener('click', clearScreen);
 evalBtn.addEventListener('click', () => {
     expression.innerHTML = result.innerHTML;
+    val = expression.innerHTML;
+    updateDisplay(val);
     result.innerHTML = "";
 });
 
-let root = document.querySelector(':root')
 toggleBtn.addEventListener('change', ({target}) => {
     if(target.checked) {
         root.style.setProperty('--bg-color', '#f1f2f3');
@@ -92,4 +103,8 @@ toggleBtn.addEventListener('change', ({target}) => {
         root.style.removeProperty('--secondary');
         root.style.removeProperty('--general');
     }
-})
+});
+
+
+
+
