@@ -35,7 +35,6 @@ h1#expression {
   text-align: right;
   width: 100%;
   max-width: 336px;
-  /* overflow-y: auto; */
 }
 #result > svg {
   width: 48px;
@@ -58,7 +57,7 @@ h3 {
 .calculator-card {
   background-color: var(--bg-color);
   color: var(--text-color);
-  width: 336px;
+  width: auto;
   padding: 4rem 1rem 3rem 1rem;
   border-radius: 3rem;
   position: relative;
