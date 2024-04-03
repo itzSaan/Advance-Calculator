@@ -41,9 +41,9 @@ let display = (stack) => {
     handleDisplaySize();
 }
 let handleDisplaySize = () => {
-    if (expression.innerHTML.length > 14) {
+    if (expression.innerHTML.length > 12) {
         expression.style.fontSize = "2rem";
-    } else if (expression.innerHTML.length > 11  && expression.innerHTML.length < 14) {
+    } else if (expression.innerHTML.length > 9  && expression.innerHTML.length < 12) {
         expression.style.fontSize = "3rem";
     } else {
         expression.style.fontSize = "4rem";
