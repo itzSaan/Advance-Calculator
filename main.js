@@ -43,9 +43,11 @@ let display = (stack) => {
 let handleDisplaySize = () => {
     if (expression.innerHTML.length > 14) {
         expression.style.fontSize = "2rem";
-    } else if (expression.innerHTML.length > 11) {
+    } else if (expression.innerHTML.length > 11  && expression.innerHTML.length < 14) {
         expression.style.fontSize = "3rem";
-    } 
+    } else {
+        expression.style.fontSize = "4rem";
+    }
 }
 let handleDelete = () => {
     let lastElement = stack[stack.length-1].toString();
